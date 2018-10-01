@@ -44,7 +44,7 @@ def icon_fmt(filename):
 
 @app.template_filter('humanize')
 def time_humanize(timestamp):
-    mdate = datetime.utcfromtimestamp(timestamp)
+    mdate = datetime.fromtimestamp(timestamp)
     return humanize.naturaltime(mdate)
 
 def get_type(mode):
