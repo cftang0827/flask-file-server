@@ -125,12 +125,15 @@ class PathView(MethodView):
             res = make_response(page, 200)
             res.set_cookie('hide-dotfile', hide_dotfile, max_age=16070400)
         elif os.path.isfile(path):
-            if 'Range' in request.headers:
-                start, end = get_range(request)
-                res = partial_response(path, start, end)
-            else:
                 res = send_file(path)
                 res.headers.add('Content-Disposition', 'attachment')
+            # if 'Range' in request.headers:
+            #     start, end = get_range(request)
+            #     print('start: {}, end: {}'.format(start, end))
+            #     res = partial_response(path, start, end)
+            # else:
+            #     res = send_file(path)
+            #     res.headers.add('Content-Disposition', 'attachment')
         else:
             res = make_response('Not found', 404)
         return res
