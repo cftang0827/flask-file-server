@@ -132,9 +132,9 @@ class PathView(MethodView):
                 else:
                     res = send_file(path)
                     res.headers.add('Content-Disposition', 'attachment')
-                else:
-                    res = send_file(path)
-                    res.headers.add('Content-Disposition', 'attachment')
+            else:
+                res = send_file(path)
+                res.headers.add('Content-Disposition', 'attachment')
             # if 'Range' in request.headers:
             #     start, end = get_range(request)
             #     print('start: {}, end: {}'.format(start, end))
